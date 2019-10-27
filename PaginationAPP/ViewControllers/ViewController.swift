@@ -14,6 +14,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var listingTableview: UITableView!
     var isNewDataLoading = false
+    private var currentPage = 1
     var userArray : [MainDataArray]?{
         didSet{
         }
@@ -103,8 +104,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         {
             if !isNewDataLoading{
                 isNewDataLoading = true
+    		currentPage += 1
                 self.indicator.startAnimating()
-                self.fetch_User_Listing(pageNo: 2)
+                self.fetch_User_Listing(pageNo: currentPage)
             }
         }
     }
